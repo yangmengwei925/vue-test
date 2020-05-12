@@ -1,0 +1,5 @@
+在子元素·点击事件用this.$emit("自定义的，data里的数据)
+在父元素的标签中用子元素的标签（自定义接收）=acceptVal。
+acceptval(data){
+在数据中的data中设值(this.str)=data
+}

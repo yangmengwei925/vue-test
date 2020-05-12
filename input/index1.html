@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        input {
+            width: 50px;
+            height: 150px;
+            outline: none;
+            /* align-items: center; */
+            text-align: center;
+            border: 0;
+            /* vertical-align: middle;
+            transform: translate(-50%, -50%) */
+        }
+        
+        table {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <table border="1">
+            <tr>
+                <td>编号</td>
+                <td>名字</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>编辑</td>
+            </tr>
+            <tr v-for="(user,index) in userList">
+                <td>
+                    <div v-if="user.state==1">
+                        <input type="text" v-model="user.id">
+
+                    </div>
+                    <div v-else>
+                        {{user.id}}
+                    </div>
+                </td>
+                <td>
+                    <div v-if="user.state==1">
+                        <input type="text" v-model="user.name">
+
+                    </div>
+                    <div v-else>
+                        {{user.name}}
+                    </div>
+                </td>
+
+                <td>
+
+                    <div v-if="user.state==1">
+                        <input type="text" v-model="user.age">
+                    </div>
+                    <div v-else>
+                        {{user.age}}
+                    </div>
+
+                </td>
+                <td>
+                    <div v-if="user.state==1">
+                        <input type="radio" value="0" v-model="user.sex">男
+                        <input type="radio" value="1" v-model="user.sex">女
+                    </div>
+                    <div v-else>
+                        {{getSex(user.sex)}}
+                    </div>
+                </td>
+                <td>
+                    <button v-show="user.state==0" @click="setstate(user)">编写</button>
+                    <button v-show="user.state==1" @click="setsave(index)">保存</button>
+                    <button v-show="user.state==1" @click="setcane(index)">取消</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                userList: [{
+                    id: 1,
+                    name: "杨梦伟",
+                    age: 24,
+                    sex: 1,
+                    state: 0
+                }, {
+                    id: 2,
+                    name: "党娇娇",
+                    age: 25,
+                    sex: 1,
+                    state: 0
+                }, {
+                    id: 3,
+                    name: "杨梦婷",
+                    age: 30,
+                    sex: 1,
+                    state: 0
+                }, {
+                    id: 4,
+                    name: "杨梦涛",
+                    age: 29,
+                    sex: 1,
+                    state: 0
+                }, {
+                    id: 5,
+                    name: "杨梦博",
+                    age: 28,
+                    sex: 1,
+                    state: 0
+                }]
+            },
+            methods: {
+                getSex(sex) {
+                    return sex == 0 ? "男" :
+                        "女"
+                },
+                setstate(user) {
+                    user.state = 1
+                },
+                setsave(index) {
+                    this.userList[index].state = 0;
+                },
+                setcane(index) {
+                    this.userList[index].state = 1
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

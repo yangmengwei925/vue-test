@@ -1,0 +1,54 @@
+export default new Vuex.Store({
+    state: {
+        num: 0
+    },
+    //类似于.vue文件中计算属性
+    getters: {
+        str(state) {
+            return state.num + "一刀"
+        }
+    },
+    //方法
+    mutations: {
+        addNum(state) {
+            state.num++
+        },
+        readuceNum(state) {
+            state.num--
+        }
+    },
+    actions: {
+
+    },
+});
+<button @click="add">+</button>
+    {{this.$store.state.num}}
+   <button @click="del">-</button>
+ 
+  <!-- <p>
+     {{this.$store.getters.str}}
+  </p> -->
+   <button @click="add">+</button>
+    {{this.$store.state.num}}
+   <button @click="del">-</button>
+   <br>
+   {{addNum}}
+  </div>
+  
+</template>
+
+<script>
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String,
+  },
+  computed:{
+    addNum(){
+    return 1+1+1
+    }
+ del(){
+      this.$store.commit("readuceNum")
+    }
+  },
+ 

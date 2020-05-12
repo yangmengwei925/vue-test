@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="message"> {{message}}
+        <table border="1">
+            <tr>
+                <td>编号</td>
+                <td>名字</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>编辑</td>
+            </tr>
+
+            <tr v-for="(user,index) in userList">
+                <td>
+                    <div v-if="user.state == 1">
+                        <input type="text" v-model="user.id">
+                    </div>
+                    <div v-else>
+                        {{user.id}}
+                    </div>
+                </td>
+                <td>
+                    <div v-if="user.state == 1">
+                        <input type="text" v-model="user.name">
+                    </div>
+                    <div v-else>
+                        {{user.name}}
+                    </div>
+                </td>
+                <td>
+                    <div v-if="user.state == 1">
+                        <input type="text" v-model="user.age">
+                    </div>
+                    <div v-else>
+                        {{user.age}}
+                    </div>
+                </td>
+                <td>
+                    <div v-if="user.state == 1">
+                        <input type="radio" value="0" v-model="user.sex">男
+                        <input type="radio" value="1" v-model="user.sex">女
+                    </div>
+                    <div v-else>
+                        {{getsex(user.sex)}}
+                    </div>
+                </td>
+                <td>
+                    <button v-show="user.state == 0" @click="setstate(user)">编辑</button>
+                    <button v-show="user.state == 1" @click="setsave(index)">保存</button>
+                    <button v-show="user.state == 1" @click="setcanel(index)">取消</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                message: "",
+                userList: [
+                    //0代表男  1代表女
+                    //state 0代表未编辑  1编辑状态
+                    {
+                        id: 1,
+                        name: "张三1",
+                        age: 15,
+                        sex: 0,
+                        state: 0
+                    }, {
+                        id: 2,
+                        name: "张三2",
+                        age: 55,
+                        sex: 0,
+                        state: 0
+                    }, {
+                        id: 3,
+                        name: "张三3",
+                        age: 22,
+                        sex: 1,
+                        state: 0
+                    }, {
+                        id: 4,
+                        name: "张三4",
+                        age: 33,
+                        sex: 0,
+                        state: 0
+                    }
+                ]
+            },
+            methods: {
+                getsex(sex) {
+                    return sex == 0 ? "男" : "女";
+                },
+                setstate(user) {
+                    user.state = 1;
+                },
+                setsave(index) {
+                    this.userList[index].state = 0;
+                },
+                setcanel(index) {
+                    this.userList[index].state = 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

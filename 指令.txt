@@ -1,0 +1,300 @@
+vue指令
+
+v-bind动态绑定属性 属于给属性动态绑定数据变量
+v-on 绑定事件
+v-if判断条件
+ 当天条件满足的是偶显示，但条件不满足的时候 隐藏 （也就是在节点添加一个display:none）
+v-if 是“真正的”条件渲染，因为它会确保在切换过程中条件块内的事件监听和子组件适当地被销毁和重建。
+v-else判断条件
+v-else-if(判断条件）
+v-show 隐藏与显示 当天满足的时候该节点下的元素渲染出来，当条件不双向绑定满足的时候不渲染元素）
+v-for循环   第一个参数是value 第二个参数是 key 第三个参数是 index。
+<v-for="(person,index) in persons">persons是数据，person是当前的一条数据， index代表当前索引值
+v-model双向绑定
+v-el          为css选择器
+computed含义计算。监听的是函数内部依赖的数据。
+在webpack的devServer中的配置
+setup为服务的中间件，可以对请求进行拦截。
+contentBase用来定义静态文件的地址。
+webpack.prop.js为本地打包上线的配置文件
+webpack.dev.js为本地打包上线的配置文件
+..................................................................................
+在vue中属于数组变异方法的有:
+push()
+shift()
+splice()
+reverse()
+....................................................................................
+在vue中，属于鼠标表单修饰符的是:
+lazy
+number
+trim
+......................................................................
+事件修饰符
+stop
+prevent
+self
+once
+.............................................................................
+组件内部的钩子函数的有
+beforeRouter 
+beforeRouteupdate
+baforeRouteLeave
+在vue中，属于vue的binding对象属性的有
+name
+ expression
+ value
+.....................................................................................................................
+repeat()方法
+repeat()方法返回一个新字符串，表示将字符串重复n次。
+参数如果是小数，会被取整。
+如果repeat（）方法的参数是负数，会报错。
+如果参数是0-1之间的小数,等于0，先进行取整运算。0-1之间的小数，取整以后等于-0.
+如果reoeat()方法参数是字符串，会先转成数字。
+。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+钩子函数 属于钩子函数 用于更新阶段钩子函数有 update beforeUpdate
+在组件实例过程中自执行或添加事件监听的函数，叫钩子函数；
+钩子函数为组件整个生命周期提供了操作接口；
+在组件化开发过程中，所有的组件逻辑基本在需要在钩子函数中。
+bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
+inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+
+update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。
+在vue组件卸载时，执行的钩子函数为destroyed
+在vue中输出文本时需要使用的指令是v-html
+3.vue计算属性
+    函数当做变量名来使用
+    在computed 下创建一个函数  直接在页面中{{函数名}} 直接渲染即可
+#4.watch监听属性
+    在vue对象下声明一个 watch 属性 ，并且在watch下添加  需要监听的变量名
+    data:{
+        message:1
+    },
+    watch:{
+        message(){
+            return this.message;
+        }
+    }
+#5.class和style样式动态绑定
+    //动态绑定class
+    v-bind:class="{active:isActive}"  
+    
+
+    //动态绑定style
+    v-bind:style="{ color: fontcolor, fontSize: fsize + 'px'}" 当样式出现多个单词的时候，
+    注意驼峰命名法
+#6. vue的npm 引用方式  vue-cli
+    //全局安装vue-cli 脚手架
+    1.npm(cnpm) install @vue/cli -g
+    //创建vue-cli项目 project-name 项目名称
+
+    2.vue create project-name
+     3.跑起来用npm run serve
+#7. vue里没有页面的概念，它只有"组件"
+#8. vue生命周期
+    //在页面还没初始化，data没有初始化，methods没初始化
+    beforeCreate
+
+    // data 已经初始化  mehthods 已经初始化
+    created(){
+        this.message
+    }
+
+    //在组件渲染成html之前调用
+    beforeMount(){
+
+    }
+    .vue  —>   html 
+
+    //在组件渲染成html之后调用
+    mounted(){
+
+    }
+
+    //在组件更新之前调用
+    beforeUpdate(){
+
+    }
+
+    //组件更新之后
+    updated(){
+
+    }
+
+    //组件销毁之前
+    beforeDestory(){
+
+    }
+
+    //组件销毁之后
+    destoryed(){
+        
+    }
+#9. 禁用eslint
+    新建vue.config.js
+    module.exports = {
+        lintOnSave:false //禁用eslint语法验证功能
+    }
+    父传子
+    子传父
+    同级组件传递
+
+    借助第三方js event.js
+    import Vue from 'vue'
+    export default new Vue();
+
+    兄弟组件传值  发送数据的一方event.$emit("键","值")
+    兄弟组件传值  接受数据的一方event.$on("键",function(data){ //data 就是传递过来的值
+    })
+#10. 引用scss
+    引用scss
+    cnpm install sass-loader --save
+    cnpm install node-sass --save
+    vue插槽
+下载icon图标用http://www.fontawesome.com.cn/点击图标库4.70
+引图片用to require(.././img/1/jpg)
+............................................................................
+表单修饰符
+lazy
+在默认情况下，v-model 在每次 input 事件触发后将输入框的值与数据进行同步
+你可以添加 lazy 修饰符，从而转变为使用 change 事件进行同步：
+<input v-model.lazy="msg" >
+number
+如果想自动将用户的输入值转为数值类型，可以给 v-model 添加 number 修饰符：
+<input v-model.number="age" type="number">
+trim
+如果要自动过滤用户输入的首尾空白字符，可以给 v-model 添加 trim 修饰符
+<input v-model.trim="msg">
+......................................................
+事件修饰符
+.stop
+.prevent
+.capture
+.self
+.once
+.passive
+.....................................................、
+关于webpack中的devtool说法
+1.用来配置生成source map的类型
+2.形成的source map 方便调试
+.......................................................
+watch属性可以提供一个函数对当前此数据有依赖的所有数据进行更新
+element
+cnpm inatall element-ui -S
+vue-router路由
+安装vue -router
+cnpm install vue-router --save
+1动态路由匹配
+--name
+--path
+2路由传参
+ 3.嵌套路由
+4编程式导航y
+
+5重定向和别名
+6路由的histroy模式
+7导航守卫
+导航元信息
+2.编程式导航
+    1.根据path使用 路由跳转
+        this.$router.push({
+            //根据path跳转
+            path:"/"+event.target.innerHTML
+            //根据name跳转
+            name:event.target.innerHTML
+        })
+
+3.路由传参
+    1).query传参
+    path:"/"+event.target.innerHTML,
+...............................................................................
+router.beforeEach((to, from, next) => {
+    // console.log(to);
+
+    if (to.meta.islogin) {
+        if (localStorage.getItem("add") == "1234") {
+            next()
+        } else {
+            next({
+                path: "/login",
+                redirect: to.fullpath
+            })
+        }
+    } else {
+        next()
+    }
+})
+redirect adj. 再直接的 . 再直接询问
+fullpath 是
+。。。。。。。。。。。。。。。。。。。。。。。。
+
+    query:{
+        id:123124
+    }
+    接收参数 this.$route.query.id
+
+
+    2).params传参(参数）
+    在路由表的path里添加祥对应的:id即可   path:'/demo/:id'
+    name:event.target.innerHTML,
+    params:{
+        id:123123
+    }
+    接收参数  this.$route.params.id
+
+
+4.嵌套路由
+    path:'/demo/:id',name:"demo",component:Demo,
+    children:[
+      { path:'/demo/demo1/',name:"demo",component:Demo1 },
+      { path:'/demo/userlist/',name:"userlist",component:userList }
+    ]
+
+轮播图
+cnpm install vue-awesome-swiper --save
+import "swiper/dist/css/swiper.css
+import {swiper,swiperSlide} from 'vue-awesome-swiper'
+export default{
+name: 'app',
+components:{
+
+}
+data(){
+return {
+msg:123
+}
+},
+事件
+methods:{
+}
+..................................................................
+methods一次加载一个数据
+component一次加载多个数据,相当于属性的一个实时计算，如果实时计算里关联了对象，那么当某
+个值改变的时候,同时会发出实时计算。
+补充Vue生命周期
+beforeCreate 是vm在实例化之后的
+create 完成数据观测 属性 方法 的运算 事件回调
+挂载
+beforemount 挂载之前使用 挂载用$el属性不能用。
+mount挂载到实例上,原有的el被新创建的vm.$el替换
+Dom
+beforeupdated由数据更新时调用
+
+updated由于数据的修改，虚拟DOM重新渲染和打补丁之后调用该钩子
+updated:function(){}
+
+...........................................................................
+module.exports={
+devServer:{
+before:app=>{
+app.get("/getList",(req,res)=>{
+var data=require("./mock/list.json")
+res.send(data)
+})
+ }
+ } }
+created(){
+axios.get('/getList").then(res=>{
+this.dataList=res.data;
+})
+ } 

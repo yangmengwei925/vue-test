@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function bubbleSort(array) {
+        //     for (var unfix = array.length - 1; unfix > 0; unfix--) {
+        //         for (var i = 0; iunfix; i++) {
+        //             if (arr[i] > arr[i + 1]) {
+        //                 var temp = array[i];
+        //                 array.splice(i, 1, array[i + 1]);
+        //                 array.splice(i + 1, 1, temp)
+        //             }
+
+        //         }
+        //     }
+        // }
+        function Selectort(array) {
+            for (var unfixed = 0; unfixed < array.length; unfixed++) {
+                var min = array[unfixed];
+                var minindex = unfixed;
+                for (var j = unfixed + 1; j < array.length; j++) {
+                    if (min > array[j]) {
+                        min = array[j]
+                        minindex = j
+                    }
+                }
+                array.splice(undefined, 0, min)
+                array.splice(minindex + 1, 1)
+            }
+        }
+    </script>
+</body>
+
+</html>

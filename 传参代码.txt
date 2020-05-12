@@ -1,0 +1,19 @@
+初始化引·数据·
+created() {
+    axios.get("/getList").then(res => {
+      this.dataList = res.data;
+     
+    });
+  },
+.....................................................................
+在vue.config.js中写
+module.exports = {
+        devServer: {
+            before: app => {
+                app.get('/getList', (req, res) => {
+                    var data = require('./mock/list.json')
+                    res.send(data)
+                })
+            }
+        }
+    }

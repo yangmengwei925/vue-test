@@ -1,0 +1,42 @@
+打包用 webpack在src中
+production 生产环境
+dist是打包出去的文件
+入口文件
+entry:_dirname+"./src/index.
+多了可以用对象。
+出口文件
+output:{
+打包过后的文件生产的目录及名字
+path:path.resolve(_dirname,"dist1")
+文件名
+filname:"a.js"
+} 
+  }
+........................................
+mode:'
+# 1.全局安装webpack
+    cli(脚手架)
+    npm(cnpm) install webpack webpack-cli -g
+# 2.局部安装webpack
+    npm init
+    npm(cnpm) install webpack webpack-cli --save
+# 3.默认参数
+    入口(entry)：./src/index.js
+    出口(output)：./dist/main.js
+#4. （压缩）（未压缩）
+    webpack --mode development   未压缩
+    webpack --mode production    压缩
+#5. 自定义命令
+    在package.json —> scripts —> 新增一个键值对即可
+    运行：npm run 指令的名称即可
+#6. 本地服务
+    webpack-dev-server
+    安装本地服务：npm(cnpm) install webpack-dev-server --save
+    在webpack.config.js —> devServer —> contentBase:'webpack打包的路径',
+#7. 打包html文件
+    安装html-webpakc-plugins npm(cnpm) install html-webpack-plugin --save
+    在webpack.config.js —> 引用html-webpack-plugin —> 新增plugins —> 
+    实例化一个 htmlwebpackplugins(template:'需要打包的html文件路径 ./src/index.html')
+#8. 打包css文件以及其他文件
+    loader 加载程序
+    加载CSS文件—>  下载 npm(cnpm) install css-loader style-loader --save

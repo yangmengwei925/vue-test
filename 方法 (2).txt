@@ -1,0 +1,26 @@
+v-bind:class一个对象，以动态地切换calss
+div v-bind:class="{ active: isActive }"></div>
+<div
+  class="static"
+  v-bind:class="{ active: isActive, 'text-danger': hasError }"
+></div>h
+对象语法
+v-bind:style
+<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+<div v-bind:style="styleObject"></div>
+data: {
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+}、
+。。。。。。。。。。。。。。。。。。。。。。。。。。。。。、
+路由的1别名alias
+{
+path:"/all",
+name:"all",
+alis:"/ails",
+}
+动态路由匹配
+配置路由的时候path项为 “/detail/:id”
+接收的时候用this.$route.params
